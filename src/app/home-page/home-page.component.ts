@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+
+declare var $: any;
 
 @Component({
   selector: 'app-home-page',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomePageComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
+    $(document).ready(function () {
+      const $videoSrc = $('#video').attr('src');
+      $('#myModal').on('hide.bs.modal', function () {
+        $('#video').attr('src', $videoSrc);
+      });
+    });
   }
 
 }
